@@ -12,7 +12,6 @@ import { Card } from "react-bootstrap"
 import background from "../../media/library1.jpg"
 import PageContainer from "./PageContainer"
 import { useState } from "react"
-import LoadingBar from "react-top-loading-bar";
 
 
 export default function Dashboard() {
@@ -20,23 +19,13 @@ export default function Dashboard() {
   const { state = {} } = useLocation()
   const { folder, childFolders, childFiles } = useFolder(folderId, state.folder)
 
-  const ref = useRef(null);
-
-  const handleLoadSomething = () => {
-    ref.current.continuousStart();
-    setTimeout(() => {
-      console.log("...loading something");
-      ref.current.complete();
-    }, 4000);
-  };
-  
 
   return (
     <>  
      <div style={{ backgroundImage: `url(${background})` }}>
   
       <Navbar />
-      <LoadingBar color="#f11946" ref={ref} />
+      
          <PageContainer>
         <Card  style={{ marginRight: '2rem',
                         marginLeft: '2rem', 
