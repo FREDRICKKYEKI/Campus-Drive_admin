@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef }  from "react"
 import { Container } from "react-bootstrap"
 import { useFolder } from "../../hooks/useFolder"
 import AddFolderButton from "./AddFolderButton"
@@ -9,35 +9,40 @@ import Navbar from "./Navbar"
 import FolderBreadcrumbs from "./FolderBreadcrumbs"
 import { useParams, useLocation } from "react-router-dom"
 import { Card } from "react-bootstrap"
-import background from "../../media/background3.jpg"
+import background from "../../media/library1.jpg"
 import PageContainer from "./PageContainer"
 import { useState } from "react"
+import LoadingBar from "react-top-loading-bar";
+
 
 export default function Dashboard() {
   const { folderId } = useParams()
   const { state = {} } = useLocation()
   const { folder, childFolders, childFiles } = useFolder(folderId, state.folder)
 
+  const ref = useRef(null);
 
-  // function showCode(){
-    
-  //     return(
-  //       <div>
-  //         <h> Campus Drive Code: <b>{folder.id}</b> <br/> </h>
-  //       </div>
-        
-  //     )
-    
-  // }
+  const handleLoadSomething = () => {
+    ref.current.continuousStart();
+    setTimeout(() => {
+      console.log("...loading something");
+      ref.current.complete();
+    }, 4000);
+  };
   
+
   return (
     <>  
      <div style={{ backgroundImage: `url(${background})` }}>
   
       <Navbar />
+      <LoadingBar color="#f11946" ref={ref} />
          <PageContainer>
-        <Card  style={{ width: '15rem'
-                        }}>
+        <Card  style={{ marginRight: '2rem',
+                        marginLeft: '2rem', 
+                        marginTop: '2rem',
+                        marginBottom: '2rem'
+                        }}  >
          
            <Card.Header>
               <div className="d-flex align-items-center">
@@ -48,11 +53,11 @@ export default function Dashboard() {
         </div>
        
            </Card.Header>
-           <Card.Body>
+           <Card.Body onChange={handleLoadSomething}>
          
            
            {childFolders.length > 0 && <h>Folder Code: <b>{folder.id}</b> <br/> </h>}
-           <h><b><hr/>Folders<hr/></b></h>
+           <h><b><hr/>Folders/Files<hr/></b></h>
         {childFolders.length > 0 && (
           
           <div className="d-flex flex-wrap"> 
