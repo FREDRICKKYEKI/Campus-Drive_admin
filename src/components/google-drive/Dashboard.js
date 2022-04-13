@@ -42,7 +42,7 @@ export default function Dashboard() {
         </div>
        
            </Card.Header>
-           <Card.Body onChange={handleLoadSomething}>
+           <Card.Body>
          
            
            {childFolders.length > 0 && <h>Folder Code: <b>{folder.id}</b> <br/> </h>}
