@@ -6,7 +6,6 @@ import { database } from "../../firebase"
 import { storage } from "../../firebase"
 import {Document, Page} from "react-pdf"
 
-
 export default function File({ file}) {
  ;
   const [modalShow, setModalShow] = useState(false);
