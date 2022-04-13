@@ -54,7 +54,7 @@ export default function File({ file}) {
   
   return (
     <>
-       <Card>
+       <Card style={{ width: '15rem' }}>
       <Card.Header>
       <Nav className="container-fluid">
           <Nav.Item className="ms-auto">
