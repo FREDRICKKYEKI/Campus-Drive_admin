@@ -5,19 +5,12 @@ import { faFile, faTrashCan} from "@fortawesome/free-solid-svg-icons"
 import { database } from "../../firebase"
 import { storage } from "../../firebase"
 import {Document, Page} from "react-pdf"
-import { pdfjs } from "react-pdf"
+
 
 export default function File({ file}) {
-  const [numPages, setNumPages] = useState(null);
+ ;
   const [modalShow, setModalShow] = useState(false);
  
-  pdfjs.GlobalWorkerOptions.workerSrc =  `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-   
-    const [pageNumber, setPageNumber] = useState(1);
-  
-    function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-    setPageNumber(1);}
 
     function handleDelete(){
       setModalShow(false)
@@ -71,14 +64,7 @@ export default function File({ file}) {
           </Nav.Item>
         </Nav>
       </Card.Header>
-      {/* <Card.Body>
-       <Document
-        file={file.url}
-        onLoadSuccess={onDocumentLoadSuccess}
-        >
-        <Page pageNumber={pageNumber} />
-      </Document>
-      </Card.Body> */}
+     
       <Card.Footer>
     <a
       href={file.url}
