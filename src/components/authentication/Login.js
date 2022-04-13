@@ -3,6 +3,9 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import CenteredContainer from "./CenteredContainer"
+import background from "../../media/pexels2.jpg"
+import { faGraduationCap} from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function Login() {
   const emailRef = useRef()
@@ -28,10 +31,19 @@ export default function Login() {
   }
 
   return (
-    <CenteredContainer>
+    <>
+    <div  style={{ backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
+      <CenteredContainer>
       <Card>
+        <Card.Header>  
+              <div className="text-center">
+          <FontAwesomeIcon icon={faGraduationCap} size="6x"/>
+           </div>
+           <h2 className="text-center">Welcome to Campus Drive</h2>  
+        
+        </Card.Header>
         <Card.Body>
-          <h2 className="text-center mb-4">Log In</h2>
+       <h2 className="text-center">Log In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
@@ -51,10 +63,16 @@ export default function Login() {
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
         </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
+        <Card.Footer>
+          <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>
+        </Card.Footer>
+      </Card>
     </CenteredContainer>
+    </div>
+    
+    </>
+    
   )
 }
