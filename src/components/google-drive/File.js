@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFile, faTrashCan} from "@fortawesome/free-solid-svg-icons"
 import { database } from "../../firebase"
 import { storage } from "../../firebase"
-import {Document, Page} from "react-pdf"
 
 export default function File({ file}) {
  ;
