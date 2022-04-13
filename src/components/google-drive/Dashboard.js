@@ -37,10 +37,6 @@ export default function Dashboard() {
       <Navbar />
          <PageContainer>
         <Card  style={{ width: '15rem'
-                        marginRight: '2rem',
-                        marginLeft: '2rem', 
-                        marginTop: '2rem',
-                        marginBottom: '2rem'
                         }}>
          
            <Card.Header>
