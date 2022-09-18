@@ -12,6 +12,7 @@ import { Card } from "react-bootstrap"
 import background from "../../media/library1.jpg"
 import PageContainer from "./PageContainer"
 import { useState } from "react"
+import LoadingBar from "react-top-loading-bar";
 
 
 export default function Dashboard() {
@@ -19,30 +20,37 @@ export default function Dashboard() {
   const { state = {} } = useLocation()
   const { folder, childFolders, childFiles } = useFolder(folderId, state.folder)
 
+  const ref = useRef(null);
+
+  const handleLoadSomething = () => {
+    ref.current.continuousStart();
+    setTimeout(() => {
+      console.log("...loading something");
+      ref.current.complete();
+    }, 4000);
+  };
+  
 
   return (
     <>  
      <div style={{ backgroundImage: `url(${background})` }}>
   
       <Navbar />
-      
+      <LoadingBar color="#f11946" ref={ref} />
          <PageContainer>
-        <Card  style={{ marginRight: '2rem',
-                        marginLeft: '2rem', 
-                        marginTop: '2rem',
-                        marginBottom: '2rem'
+        <Card  style={{ margin:"2rem",maxHeight:"100vh" ,overflow:"scroll"
                         }}  >
          
-           <Card.Header>
-              <div className="d-flex align-items-center">
-          <FolderBreadcrumbs currentFolder={folder} />
-          <AddFileButton currentFolder={folder} />
-          <a style={{ marginLeft: '.5rem' }} />
-          <AddFolderButton currentFolder={folder} />
-        </div>
-       
+           <Card.Header >
+            <div  className="d-flex align-items-center">
+              <FolderBreadcrumbs currentFolder={folder} />
+              <AddFileButton currentFolder={folder} />
+              <a style={{ marginLeft: '.5rem' }} />
+              <AddFolderButton currentFolder={folder} />
+            </div>
+          
            </Card.Header>
-           <Card.Body>
+           <Card.Body onChange={handleLoadSomething}>
          
            
            {childFolders.length > 0 && <h>Folder Code: <b>{folder.id}</b> <br/> </h>}
