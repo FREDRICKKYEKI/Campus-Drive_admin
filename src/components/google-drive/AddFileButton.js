@@ -94,7 +94,6 @@ export default function AddFileButton({ currentFolder }) {
         <FontAwesomeIcon icon={faFileUpload} />
         <input
           type="file"
-          multiple
           onChange={handleUpload}
           style={{ opacity: 0, position: "absolute", left: "-9999px" }}
         />
@@ -109,7 +108,8 @@ export default function AddFileButton({ currentFolder }) {
               right: "1rem",
               maxWidth: "250px",
               height:"400px",
-              overflow:"scroll"
+              overflow:"scroll",
+        marginTop:"100px"
             }}
           >
             {uploadingFiles.map(file => (
