@@ -102,6 +102,7 @@ export default function AddFileButton({ currentFolder }) {
       {uploadingFiles.length > 0 &&
         ReactDOM.createPortal(
           <div
+          className="card"
             style={{
               position: "absolute",
               bottom: "1rem",
