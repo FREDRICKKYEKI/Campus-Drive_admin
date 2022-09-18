@@ -106,6 +106,8 @@ export default function AddFileButton({ currentFolder }) {
               bottom: "1rem",
               right: "1rem",
               maxWidth: "250px",
+              height:"600px",
+              overflow:"scroll"
             }}
           >
             {uploadingFiles.map(file => (
