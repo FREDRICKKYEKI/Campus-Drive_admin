@@ -7,12 +7,28 @@ import { storage, database } from "../../firebase"
 import { ROOT_FOLDER } from "../../hooks/useFolder"
 import { v4 as uuidV4 } from "uuid"
 import { ProgressBar, Toast } from "react-bootstrap"
+import CloseButton from 'react-bootstrap/CloseButton';
+
 
 export default function AddFileButton({ currentFolder }) {
   const [uploadingFiles, setUploadingFiles] = useState([])
+  const [uploadtask, setUploadTask] = useState()
   const { currentUser } = useAuth()
 
-  function handleUpload(e) {
+ const handleStopUpload =(file)=>{
+  
+  uploadtask.cancel();
+
+    setUploadingFiles(prevUploadingFiles => {
+      return prevUploadingFiles.filter(uploadFile => {
+        return uploadFile.id !== file.id
+      })
+    })
+
+    
+  }
+
+function handleUpload(e) {
     const file = e.target.files[0]
     if (currentFolder == null || file == null) return
 
@@ -21,14 +37,14 @@ export default function AddFileButton({ currentFolder }) {
       ...prevUploadingFiles,
       { id: id, name: file.name, progress: 0, error: false },
     ])
-    const filePath =
-      currentFolder === ROOT_FOLDER
+    const filePath = currentFolder === ROOT_FOLDER
         ? `${currentFolder.path.join("/")}/${file.name}`
         : `${currentFolder.path.join("/")}/${currentFolder.name}/${file.name}`
 
     const uploadTask = storage
       .ref(`/files/${currentUser.uid}/${filePath}`)
       .put(file)
+      setUploadTask(uploadTask)
 
     uploadTask.on(
       "state_changed",
@@ -86,7 +102,7 @@ export default function AddFileButton({ currentFolder }) {
         })
       }
     )
-  }
+}
 
   return (
     <>
@@ -94,6 +110,7 @@ export default function AddFileButton({ currentFolder }) {
         <FontAwesomeIcon icon={faFileUpload} />
         <input
           type="file"
+          multiple
           onChange={handleUpload}
           style={{ opacity: 0, position: "absolute", left: "-9999px" }}
         />
@@ -101,11 +118,15 @@ export default function AddFileButton({ currentFolder }) {
       {uploadingFiles.length > 0 &&
         ReactDOM.createPortal(
           <div
+          className="card"
             style={{
-              position: "absolute",
+              position: "fixed",
               bottom: "1rem",
               right: "1rem",
               maxWidth: "250px",
+              height:"400px",
+              overflow:"scroll",
+              marginTop:"100px",
             }}
           >
             {uploadingFiles.map(file => (
@@ -120,10 +141,13 @@ export default function AddFileButton({ currentFolder }) {
                 }}
               >
                 <Toast.Header
-                  closeButton={file.error}
+                  closeButton={false}
                   className="text-truncate w-100 d-block"
                 >
-                  {file.name}
+                  <div >
+                    {file.name} 
+                  </div>
+                   <CloseButton show onClick={()=>{handleStopUpload(file)}}/>
                 </Toast.Header>
                 <Toast.Body>
                   <ProgressBar

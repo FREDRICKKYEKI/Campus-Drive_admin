@@ -3,7 +3,7 @@ import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import CenteredContainer from "./CenteredContainer"
-import background from "../../media/background3.jpg"
+import background from "../../media/grad.jpg"
 import Navbar from "../google-drive/Navbar"
 
 export default function Profile() {
@@ -24,8 +24,7 @@ export default function Profile() {
 
   return (
     <>
-    <Navbar />
-        <div style={{ backgroundImage: `url(${background})` }}>
+        <div style={{ backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'  }}>
        <CenteredContainer>
       <Card>
         <Card.Body>

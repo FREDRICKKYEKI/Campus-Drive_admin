@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+.about{
+    font-family: 'Poppins', sans-serif;
+    animation-name: appear;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+@keyframes appear {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+.bgcont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    height: 400px;
+}
+.overlay{
+    width: 100%;
+    height: 400px;
+    position:absolute;
+    transition: all .5s;
+}
+.overlay:hover{
+    background-color: rgba(95, 95, 95, 0.5);
+}
+.icon{
+    margin-left: 10px;
+}
+
+.brand{
+    position:absolute;
+    z-index: 1;
+    padding: 10px;
+    background: rgb(0, 0, 0,0.8);  
+    border-radius: 25px;
+    transition: all .5s;
+}
+.brand:hover{
+    box-shadow: 2px 2px 96px 1px rgb(0, 0, 0);
+}
+.fa{
+cursor: pointer;
+ margin: 10px;
+ padding: 10px;
+ border-radius: 50%;
+ transition: all .4s;
+}
+/* .fa-instagram:hover{
+    transform: scale(1.3);
+} */
+.fa-google:active, .fa-instagram:active, .fa-facebook:active{
+    transform: scale(1);
+}
+h5{
+cursor: pointer;
+}
+
+.founderImg{
+    width:30vh;
+    border-radius: 50%;
+}
+@media screen and (max-width: 1200px) {
+    .bgcont {
+      margin-left: -10px;
+      margin-right: -10px;
+      height: 200px;
+    }
+    .overlay{
+        width: 100%;
+        height: 200px;
+        position:absolute;
+        transition: all .5s;
+    }
+  }
+.dp{
+    width:20%
+}

@@ -3,6 +3,8 @@ import "firebase/compat/auth"
 import "firebase/compat/firestore"
 import "firebase/compat/storage"
 
+
+
 const app = firebase.initializeApp({
     apiKey: "AIzaSyA4B8Mgr0oET7EhbDvSxO0aTCmSNRdL_s0",
     authDomain: "campus-drive-b2ea0.firebaseapp.com",
@@ -14,15 +16,18 @@ const app = firebase.initializeApp({
   })
   
   const firestore = app.firestore()
+  export const storage = app.storage()
+
   export const database = {
     folders: firestore.collection("folders"),
     files: firestore.collection("files"),
     formatDoc: doc => {
       return {id: doc.id, ...doc.data()}
     },
-    getCurrentTimestamp: firebase.firestore.FieldValue.serverTimestamp
+    getCurrentTimestamp: firebase.firestore.FieldValue.serverTimestamp,
+    
   }
   export const auth = app.auth()
-  export const storage = app.storage()
+
   export default app 
   

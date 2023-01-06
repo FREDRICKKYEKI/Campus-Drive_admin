@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef }  from "react"
 import { Container } from "react-bootstrap"
 import { useFolder } from "../../hooks/useFolder"
 import AddFolderButton from "./AddFolderButton"
@@ -9,69 +9,54 @@ import Navbar from "./Navbar"
 import FolderBreadcrumbs from "./FolderBreadcrumbs"
 import { useParams, useLocation } from "react-router-dom"
 import { Card } from "react-bootstrap"
-import background from "../../media/background3.jpg"
+import background from "../../media/library1.jpg"
 import PageContainer from "./PageContainer"
 import { useState } from "react"
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Dashboard() {
   const { folderId } = useParams()
   const { state = {} } = useLocation()
   const { folder, childFolders, childFiles } = useFolder(folderId, state.folder)
 
-
-  // function showCode(){
-    
-  //     return(
-  //       <div>
-  //         <h> Campus Drive Code: <b>{folder.id}</b> <br/> </h>
-  //       </div>
-        
-  //     )
-    
-  // }
+  const override = `
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
   
+    
   return (
     <>  
-     <div style={{ backgroundImage: `url(${background})` }}>
-  
-      <Navbar />
-         <PageContainer>
-        <Card  style={{ marginRight: '2rem',
-                        marginLeft: '2rem', 
-                        marginTop: '2rem',
-                        marginBottom: '2rem'
-                        }}>
-         
-           <Card.Header>
-              <div className="d-flex align-items-center">
-          <FolderBreadcrumbs currentFolder={folder} />
-          <AddFileButton currentFolder={folder} />
-          <a style={{ marginLeft: '.5rem' }} />
-          <AddFolderButton currentFolder={folder} />
-        </div>
-       
+     <div style={{ backgroundImage: `url(${background})` }}>   
+      <PageContainer>        
+        <Card  style={{ margin:"2rem",maxHeight:"100vh" ,overflow:"scroll"}}>
+           <Card.Header >
+            <div  className="d-flex align-items-center">
+              <FolderBreadcrumbs currentFolder={folder} />
+              <AddFileButton currentFolder={folder} />
+              <a style={{ marginLeft: '.5rem' }} />
+              <AddFolderButton currentFolder={folder} />
+            </div>
            </Card.Header>
-           <Card.Body>
+           <Card.Body >
          
            
-           {childFolders.length > 0 && <h>Folder Code: <b>{folder.id}</b> <br/> </h>}
-           <h><b><hr/>Folders<hr/></b></h>
-        {childFolders.length > 0 && (
-          
-          <div className="d-flex flex-wrap"> 
-                
-            {childFolders.map(childFolder => (
-              <div
-                key={childFolder.id}
-                style={{ maxWidth: "250px" }}
-                className="p-2"
-              >
-                <Folder folder={childFolder} />
-               
+          {childFolders.length > 0 && <h>Folder Code: <b>{folder.id}</b> <br/> </h>}
+          <h><b><hr/>Folders/Files<hr/></b></h>      
+            {childFolders.length > 0 && (       
+              <div className="d-flex flex-wrap">              
+                {childFolders.map(childFolder => (
+                  <div
+                    key={childFolder.id}
+                    style={{ maxWidth: "250px" }}
+                    className="p-2">
+                    <Folder folder={childFolder} />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        ) }
+          )
+          }
         {childFolders.length > 0 && childFiles.length > 0 && <h><hr/><b>Files</b></h>}
         
         {childFiles.length > 0 && (
@@ -83,10 +68,8 @@ export default function Dashboard() {
             ))}
           </div>
         )}
-           </Card.Body>
-          
-    
-      </Card>
+        </Card.Body>
+        </Card>
       </PageContainer>
       </div>
       

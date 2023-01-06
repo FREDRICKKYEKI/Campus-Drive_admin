@@ -3,6 +3,9 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import CenteredContainer from "./CenteredContainer"
+import { faGraduationCap} from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import background from "../../media/pexels2.jpg"
 
 export default function Signup() {
   const emailRef = useRef()
@@ -33,8 +36,15 @@ export default function Signup() {
   }
 
   return (
-    <CenteredContainer>
+    <div  style={{ backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+      <CenteredContainer>
       <Card>
+      <Card.Header>
+      <div className="text-center">
+          <FontAwesomeIcon icon={faGraduationCap} size="6x"/>
+           </div>
+           <h2 className="text-center">Welcome to Campus Drive</h2>  
+      </Card.Header>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -57,10 +67,14 @@ export default function Signup() {
             </Button>
           </Form>
         </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
+        <Card.Footer>
+           <div className="w-100 text-center mt-2">
         Already have an account? <Link to="/login">Log In</Link>
       </div>
+        </Card.Footer>
+      </Card>
     </CenteredContainer>
+    </div>
+    
   )
 }

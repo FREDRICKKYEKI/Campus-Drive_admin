@@ -1,0 +1,175 @@
+.mobtut{
+    width:20vw;
+    margin: 1rem;
+    transition: all .4s;
+    box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.39);
+}
+@media only screen and (max-width: 1200px){
+    .mobtut{
+        width:60vw;
+    } 
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+.tutorial{
+  font-family: 'Poppins', sans-serif;
+  background-color: rgb(226, 226, 226);
+  background-position: center;
+  background-repeat: no-repeat;
+ 
+}
+.tut{
+  background: rgb(255, 255, 255);
+  height: 140px;
+  display: flex;
+  margin-right: 10%;
+  margin-left   : 10%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px  black;
+  padding: 1rem;
+}
+.btns{
+  width: 100%;
+  position: absolute;
+  top: 20vh;
+}
+.prev, .next{
+  width: max-content;
+  /* background: rgb(0, 164, 175); */
+  margin: 5px;
+  transition: all .3s;
+  font-weight: bold;
+  padding: 40px;
+  border-radius: 50%;
+}
+.next{
+  float: right;
+  margin-right: 8vw;
+}
+.prev{
+  float: left;
+  margin-left: 8vw;
+}
+
+
+.imgTut{
+  width: 100%;
+  max-width: 700px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 100px  rgba(2, 136, 145, 0.301);;
+}
+.cont{
+  position: relative;
+}
+.dots{
+  transition: all .4s;
+  display: flex;
+  margin: 20px;
+  margin-top: -10px;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.img{
+  height: 60vh;
+  animation: appear 1s 1;
+}
+
+@keyframes appear {
+from{opacity: 0.4;}
+  to{opacity: 1;}
+}
+
+.dot{
+  /* opacity: 0.3; */
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: rgb(112, 112, 112); 
+  transition: all .2s;
+}
+.dot:hover, .dot-active{
+  height: 10px;
+  width: 10px;
+  background-color: #1D89E4;
+
+}
+.dot-active{
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+  background-color: #1D89E4;
+  cursor: pointer;
+}
+
+.dot-active:hover{
+  background-color: #1D89E4;
+}
+
+.rules, .carD{
+  background: white;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px  black;
+}
+.fa{
+  transition: all .2s;
+  cursor: pointer;
+}
+.fa:hover{
+  color: rgb(88, 88, 88);
+}
+.fa:active{
+  color: rgb(32, 32, 32);
+}
+
+/* media queries */
+@media only screen and (max-width: 1200px){
+  .tut{
+    transition: all .4s;
+    height: 35vh;
+  }
+  .prev, .next{
+    background-color:rgba(0, 0, 0, 0.37); ;
+  }
+  .next{
+    float: right;
+    margin-right: 3vw;
+  }
+  .prev{
+    float: left;
+    margin-left: 3vw;
+  }
+  .fa:hover{
+    color: rgb(2, 135, 145);
+
+  }
+  .btns{
+  color: white;
+  }
+  .dots{
+    margin-top: 10px;
+  }
+}
+
+/* media queries */
+@media only screen and (max-width: 700px){
+  .img{
+    height: 55vh;
+  }
+}
+
+/* media queries */
+@media only screen and (max-width: 400px){
+  .img{
+    height: 30vh;
+  }
+.btns{
+  color: white;
+  }
+}

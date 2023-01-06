@@ -8,7 +8,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons"
  export default function NavbarComponent() {
   return (
     
-    <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+    <Navbar sticky="top" collapseOnSelect expand="sm" bg="dark" variant="dark" >  
       
       <Navbar.Brand as={Link} to="/" >
       <a style={{ marginLeft: '.5rem' }} />
@@ -20,13 +20,13 @@ import { faUser } from "@fortawesome/free-solid-svg-icons"
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="container-fluid">
       <Nav.Item>
-         <Nav.Link>Home</Nav.Link>
+         <Nav.Link as={Link} to="/">Home</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link>About</Nav.Link>
+        <Nav.Link as={Link} to="/about">About</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-         <Nav.Link>Getting Started</Nav.Link>
+         <Nav.Link  as={Link} to="/getstarted">Getting Started</Nav.Link>
       </Nav.Item>
       
       <Nav.Item className="ms-auto">
