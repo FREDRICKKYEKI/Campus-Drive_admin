@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFile, faTrashCan} from "@fortawesome/free-solid-svg-icons"
 import { database } from "../../firebase"
 import { storage } from "../../firebase"
+<<<<<<< HEAD
 import {Document, Page} from "react-pdf"
 import { pdfjs } from "react-pdf"
 
@@ -18,6 +19,13 @@ export default function File({ file}) {
     function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
     setPageNumber(1);}
+=======
+
+export default function File({ file}) {
+ ;
+  const [modalShow, setModalShow] = useState(false);
+ 
+>>>>>>> 70043265acde002d8f3f8c66fc7fedc785e8ab73
 
     function handleDelete(){
       setModalShow(false)
@@ -71,6 +79,10 @@ export default function File({ file}) {
           </Nav.Item>
         </Nav>
       </Card.Header>
+<<<<<<< HEAD
+=======
+     
+>>>>>>> 70043265acde002d8f3f8c66fc7fedc785e8ab73
       <Card.Footer>
     <a
       style={{textAlign:"start"}}

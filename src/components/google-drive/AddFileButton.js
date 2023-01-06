@@ -8,6 +8,10 @@ import { ROOT_FOLDER } from "../../hooks/useFolder"
 import { v4 as uuidV4 } from "uuid"
 import { ProgressBar, Toast } from "react-bootstrap"
 import CloseButton from 'react-bootstrap/CloseButton';
+<<<<<<< HEAD
+=======
+import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
+>>>>>>> 70043265acde002d8f3f8c66fc7fedc785e8ab73
 
 
 export default function AddFileButton({ currentFolder }) {
@@ -28,7 +32,11 @@ export default function AddFileButton({ currentFolder }) {
     
   }
 
+<<<<<<< HEAD
 function handleUpload(e) {
+=======
+  function handleUpload(e) {
+>>>>>>> 70043265acde002d8f3f8c66fc7fedc785e8ab73
     const file = e.target.files[0]
     if (currentFolder == null || file == null) return
 
@@ -44,7 +52,11 @@ function handleUpload(e) {
     const uploadTask = storage
       .ref(`/files/${currentUser.uid}/${filePath}`)
       .put(file)
+<<<<<<< HEAD
       setUploadTask(uploadTask)
+=======
+setUploadTask(uploadTask)
+>>>>>>> 70043265acde002d8f3f8c66fc7fedc785e8ab73
 
     uploadTask.on(
       "state_changed",

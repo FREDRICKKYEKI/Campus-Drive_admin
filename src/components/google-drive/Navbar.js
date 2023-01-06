@@ -8,7 +8,11 @@ import { faUser } from "@fortawesome/free-solid-svg-icons"
  export default function NavbarComponent() {
   return (
     
+<<<<<<< HEAD
     <Navbar sticky="top" collapseOnSelect expand="sm" bg="dark" variant="dark" >  
+=======
+    <Navbar sticky="top"  collapseOnSelect expand="sm" bg="dark" variant="dark">
+>>>>>>> 70043265acde002d8f3f8c66fc7fedc785e8ab73
       
       <Navbar.Brand as={Link} to="/" >
       <a style={{ marginLeft: '.5rem' }} />
