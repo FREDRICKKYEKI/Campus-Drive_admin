@@ -24,10 +24,6 @@ export default function Profile() {
 
   return (
     <>
-<<<<<<< HEAD
-=======
-    <Navbar />
->>>>>>> 70043265acde002d8f3f8c66fc7fedc785e8ab73
         <div style={{ backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'  }}>
        <CenteredContainer>
       <Card>
