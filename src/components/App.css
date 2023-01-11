@@ -78,3 +78,14 @@ cursor: pointer;
 .dp{
     width:20%
 }
+.btn{
+    padding-right: 3rem !important;
+}
+.btn:hover{
+    color: white !important;
+    background-color: black;
+}
+.down-load{
+    border: 2px solid rgb(0, 110, 255);
+    padding: 2vw;
+}

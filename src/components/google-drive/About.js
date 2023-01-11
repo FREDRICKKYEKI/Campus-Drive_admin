@@ -43,7 +43,12 @@ export const About = () => {
   <div style={{textAlign:"center",margin:"10px"}}>
     <h4>Thank you so much for supporting <b>Campus Drive</b>.</h4>
     <h4>Feel free to talk to us through our Socials to get to know us more.</h4>
-        
+    <div className='down-load'>
+      <h4>Click below to download the Android version...</h4>
+      <a href='https://firebasestorage.googleapis.com/v0/b/campus-drive-b2ea0.appspot.com/o/apk%2Fcom.isaaco.campusdrive-v1.0.apk?alt=media&token=41aa8dc7-fd10-4465-a344-8c1a3e27245c'>
+        <button class="btn"><i class="fa fa-download"></i> Download</button>        
+      </a>
+    </div>
   </div>
   </Container>
     <div style={{padding:"5px", background:"rgb(184, 184, 184)"}}>
